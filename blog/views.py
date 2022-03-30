@@ -1,7 +1,6 @@
 from re import template
-from django.shortcuts import render
 from .models import Post
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 
 # Create your views here.
 
@@ -9,6 +8,10 @@ class PostList(ListView) :
     model = Post
     ordering = '-pk'
     template_name = 'page/portfolio.html'
+
+class PostDetail(DetailView) :
+    model = Post
+    template_name = 'page/portfolio_detail.html'
 
 
 # def portfolio(request) :
