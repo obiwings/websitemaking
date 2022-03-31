@@ -63,7 +63,11 @@
         {% for p in post_list %}
         <div class="row portfolio-preview">
           <div class="col-lg-3 col-md-3 d-flex justify-content-center img-fluid align-self-center">
-            <img src="{{ p.head_image.url }}" alt="Card image cap" class="card-img-top" width="100%">
+            {% if p.head_image %}
+              <img src="{{ p.head_image.url }}" alt="Card image cap" class="card-img-top" width="100%">
+            {% else %}
+              <img src="{% static 'blog/storage/um.png' %}" alt="UmJunSik" class="card-img-top" width="100%">
+            {% endif %}
           </div>
           <div class="col-lg-9 col-md-9">
             <h3 class="mb-2"><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h3>
