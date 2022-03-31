@@ -1,57 +1,22 @@
-<!DOCTYPE html>
-{% load static %}
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
-    <title>Portfolio</title>
-    <!-- css -->
-    <link rel="stylesheet" href="{% static 'blog/bootstrap4/css/bootstrap.min.css' %}" media="screen">
-    <link rel="stylesheet" href="{% static 'blog/bootstrap4/css/font-awesome.min.css' %}" media="screen">
-    <!-- <link rel="stylesheet" href="../bootstrap4/css/jquery-ui.css" media="screen"> -->
-    <!-- <link rel="stylesheet" href="../bootstrap4/css/linearicons.css" media="screen"> -->
-    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
-    <!-- <link rel="stylesheet" href="../bootstrap4/css/magnific-popup.css" media="screen"> -->
-    <link rel="stylesheet" href="{% static 'blog/bootstrap4/css/main.css' %}" media="screen">
-    <!-- <link rel="stylesheet" href="../bootstrap4/css/nice-select.css" media="screen"> -->
-    <!-- <link rel="stylesheet" href="../bootstrap4/css/owl.carousel.css" media="screen"> -->
+{% extends 'page/base.html' %}
+
+{% block head_title %}
+  {{ post.title }} 
+{% endblock %}
 
 
-</head>
-
-<body style="display: block" class>
-  <!-- bar -->
-
-  <button type="button" id="mobile-nav-toggle"><i class="lnr lnr-menu"></i></button>
-  <header id="header" class>
-    <div class="container main-menu">
-      <div class="row align-items-center justify-content-between d-flex">
-        <div class="" id="logo">
-          <a href="/"><h3>K.S. KIM. </h3></a>
-        </div>
-        <nav id="nav-menu-container">
-          <ul class="nav-menu sf-js-enabled sf-arrows" style="touch-action: pan-y;">
-            <li><a href="/">Home</a></li>
-            <li><a href="/about_me">About</a></li>
-            <li><a href="/portfolio">Portfolio</a></li>
-            <li><a href="HarrisonJansmaResume.pdf" class="genric-btn primary-border circle" target="_blank">Contact</a></li>
-            </ul>
-
-        </nav><!-- #nav-menu-container -->
-      </div>
-    </div>
-  </header>
-
-
-
+{% block main_area %}
   <!-- title -->
   <section class="about-banner mb-20">
-    <div class="container">
+    <div class="container" id="main-area">
       <div class="row d-flex align-items-center justify-content-center">
         <div class="about-content col-lg-12">
           <h2 class="text-white mb-1">
             {{ post.title }}
           </h2>
+          <h4 class="text-white mb-20">
+            {{ post.hook_text }}
+          </h4>
           <span class="text-white mb-5">By Jeong-Un KIM &nbsp; <span class="lnr lnr-pencil"></span>{{ post.created_at }}</span> 
           <p class="text-white link-nav">
               <a href="/">Home</a>  <span class="lnr lnr-arrow-right"></span>  <a href="archive">Portfolio</a> <span class="lnr lnr-arrow-right"></span> <a href="archive">project title</a>
@@ -62,7 +27,7 @@
   </section>
 
   <!-- content -->
-  <section class="portfolio-content">
+  <section class="portfolio-content" id="post-area">
       <div class="container">
           <!-- <img src="../storage/122.jpg" alt="red" height="300px"> -->
           <p>
@@ -75,45 +40,6 @@
   <!-- comment -->
 
 
+{% endblock %}
 
 
-
-
-
-  <!-- scripts -->
-  <script src="{% static 'blog/bootstrap4/js/bootstrap.min.js' %}"></script>
-  <script src="{% static 'blog/bootstrap4/js/jquery-2.2.4.min.js' %}"></script>
-  <!-- <script src="../bootstrap4/js/popper.min.js"></script> -->
-  <!-- <script src="../bootstrap4/js/easing.min.js"></script> -->
-  <!-- <script src="../bootstrap4/js/hoverIntent.js"></script> -->
-  <!-- <script src="../bootstrap4/js/scroll.js"></script> -->
-  <script src="{% static 'blog/bootstrap4/js/main.js' %}"></script>
-  <script src="{% static 'blog/bootstrap4/js/jquery.counterup.min.js' %}"></script>
-  <script src="{% static 'blog/bootstrap4/js/owl.carousel.min.js' %}"></script>
-  <script src="{% static 'blog/bootstrap4/js/simple-skillbar.js' %}"></script>
-  <script src="{% static 'blog/bootstrap4/js/superfish.min.js' %}"></script>
-  <!-- <script src="../bootstrap4/js/jquery.tabs.min.js"></script> -->
-  <!-- <script src="../bootstrap4/js/isotope.pkgd.min.js"></script> -->
-  <script src="{% static 'blog/bootstrap4/js/jquery.magnific-popup.min.js' %}"></script>
-
-
-  
-  
-
-
-
-  <!-- mobile nav -->
-  <nav id="mobile-nav">
-    <ul class="" style="touch-action: pan-y;" id="">
-      <li><a href="/">Home</a></li>
-      <li><a href="about">About</a></li>
-      <li><a href="archive">Portfolio</a></li>
-      <li><a href="HarrisonJansmaResume.pdf" class="genric-btn primary-border circle" target="_blank">CONTACT</a></li>
-    </ul>
-  </nav>
-  <div id="mobile-body-overly" style="display: none;"></div>
-
-  
-</body>
-
-</html>
