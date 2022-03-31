@@ -131,3 +131,4 @@ dmypy.json
 # django prj
 .idea/
 migrations/
+_media/
