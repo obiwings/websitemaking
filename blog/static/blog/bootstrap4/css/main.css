@@ -48,6 +48,10 @@ $black			: #222;
 /* =================================== */
 /*  Basic Style
 /* =================================== */
+
+@import url('https://fonts.googleapis.com/css?family=Nanum+Gothic');
+
+
 ::-moz-selection {
   /* Code for Firefox */
   background-color: #8490ff;
@@ -93,7 +97,7 @@ $black			: #222;
 
 body {
   color: #777777;
-  font-family: "Poppins", serif;
+  font-family: "Poppins", "Nanum Gothic", serif;
   font-size: 15px;
   font-weight: 300;
   line-height: 1.625em;

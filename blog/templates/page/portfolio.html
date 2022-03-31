@@ -3,7 +3,7 @@
 
 {% block main_area %}
     <!-- title banner -->
-  <section class="about-banner mb-50">
+  <section class="about-banner">
       <div class="container">
         <div class="row d-flex align-items-center justify-content-center">
           <div class="about-content col-lg-12">
@@ -15,6 +15,20 @@
         </div>
       </div>
   </section>
+
+
+  <div id="menubar">
+    <ul>
+      {% for category in categories %}
+          <li><a href="{{ category.get_absolute_url }}">{{ category }}</a></li>
+      {% endfor %}
+          <li><a href="/portfolio/category/no_category/">미분류</a></li>
+    </ul>
+  </div>
+  <hr>
+  <br>
+
+
 
   <!-- portfolio list -->
   <section class="portfolio-list">

@@ -17,9 +17,10 @@
           <h4 class="text-white mb-20">
             {{ post.hook_text }}
           </h4>
-          <span class="text-white mb-5">By Jeong-Un KIM &nbsp; <span class="lnr lnr-pencil"></span>{{ post.created_at }}</span> 
+          <span class="text-white mb-5">By {{ post.author | upper }} &nbsp; <span class="lnr lnr-pencil"></span>{{ post.created_at }}</span> 
           <p class="text-white link-nav">
-              <a href="/">Home</a>  <span class="lnr lnr-arrow-right"></span>  <a href="archive">Portfolio</a> <span class="lnr lnr-arrow-right"></span> <a href="archive">project title</a>
+              <a href="/">Home</a>  <span class="lnr lnr-arrow-right"></span>  <a href="archive">Portfolio</a> <span class="lnr lnr-arrow-right"></span>
+              <a href="archive">{{ post.title | truncatewords:2 }}</a>
           </p>
         </div>
       </div>

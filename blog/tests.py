@@ -1,14 +1,19 @@
 from turtle import pos, title
+from unicodedata import category
 from urllib import response
 from django.test import TestCase, Client
 from bs4 import BeautifulSoup
-from .models import Post
+from .models import Post, Category
 
 # Create your tests here.
 
 class TestView(TestCase) :
     def setUp(self) :
         self.client = Client()
+        
+        self.category_programming = Category.objects.create(name='programming', slug='programming')
+        self.category_music = Category.objects.create(name='music', slug='music')
+        
 
     def test_post_list(self) :
         response = self.client.get('/portfolio/')
@@ -23,11 +28,13 @@ class TestView(TestCase) :
         self.assertIn('아직 게시물이 없습니다.', main_area.text)
         post_001 = Post.objects.create(
             title = '첫 번째 포스트',
-            content = '첫 포스트 입니다.'
+            content = '첫 포스트 입니다.',
+            category = self.category_programming,
         )
         post_002 = Post.objects.create(
             title = '두 번째 포스트',
-            content = '2 포스트 입니다.'
+            content = '2 포스트 입니다.',
+            category = self.category_music,
         )
         self.assertEqual(Post.objects.count(), 2)
         response = self.client.get('/portfolio/')
