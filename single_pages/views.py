@@ -4,11 +4,11 @@ from django.shortcuts import render
 def landing(request) :
     return render(
         request,
-        'single_pages/home.html'
+        'page/home.html'
     )
 
 def about_me(request) :
     return render(
         request,
-        'single_pages/about_me.html'
+        'page/about_me.html'
     )

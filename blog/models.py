@@ -7,6 +7,18 @@ import os
 
 # Create your models here.
 
+class Tag(models.Model) :
+    name = models.CharField(max_length=50)
+    slug = models.SlugField(max_length=200, unique=True, allow_unicode=True)
+
+    def __str__(self) :
+        return self.name
+
+    def get_absolute_url(self) :
+        return f'/portfolio/tag/{self.slug}/'
+
+
+
 class Category(models.Model) :
     name = models.CharField(max_length=40, unique=True)
     slug = models.SlugField(max_length=50, unique=True, allow_unicode=True)
@@ -34,6 +46,8 @@ class Post(models.Model) :
 
     head_image = models.ImageField(upload_to='blog/images/%Y/%m/%d/', blank=True)
     file_upload = models.FileField(upload_to='blog/files/%Y/%m/%d/', blank=True)
+
+    tags = models.ManyToManyField(Tag, blank=True)
 
     def __str__(self) :
         return f'{self.pk}. {(self.title)} :: {self.author}'
