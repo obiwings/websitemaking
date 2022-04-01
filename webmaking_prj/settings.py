@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'blog',
     'single_pages',
     'crispy_forms',
-    'markdownx',
+    # 'markdownx',
+    'django_summernote',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, '_media')
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
+

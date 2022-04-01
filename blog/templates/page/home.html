@@ -6,6 +6,8 @@
 
 
 {% block main_area %}
+{% load static %}
+
   <!-- title -->
   <section class="about-banner mb-40">
     <div class="container" id="main-area">
@@ -47,7 +49,7 @@
         </div>
 
         <div class="col-lg-6 col-md-6 banner-right">
-          <img src="../storage/um.png" alt="UM" style="width:auto;height:auto;max-width:100%">
+          <img src="{% static 'blog/storage/top.jpg' %}" alt="RUN" style="width:auto;height:auto;max-width:100%">
         </div> 
       </div>
     </div>
@@ -123,14 +125,14 @@
     <div class="container">
       <h2 class="mb-15">LATEST PROJECTS</h2>
       <div class="row">
-        {% for p in posts %}
-          <div class="col-lg-4 col-md-4">
-            <h2>{{ p.title }}</h2>
-            <h4>{{ p.created_at }}</h4>
-            <p>{{ p.content }}</p>
-          </div>
-          <hr>
-        {% endfor %}
+          {% for p in post_list %}
+            <div class="col-lg-4 col-md-4">
+              <h2>{{ p.title }}</h2>
+              <h4>{{ p.created_at }}</h4>
+              <p>{{ p.content }}</p>
+            </div>
+            <hr>
+          {% endfor %}
       </div>
     </div>
   </section>

@@ -22,7 +22,7 @@
 
   <!-- post form -->
   <div class="container">
-    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+    <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
         <table>
             {{ form | crispy }}
             <div id="div_id_tags_str">
@@ -32,8 +32,38 @@
         </table>
         <br>
         <button type="submit" class="btn btn-primary float-right">Submit</button>
+        <br>
     </form>
-    {{ form.media }}
+    <hr>
+
+
+
+    <!-- <div class="container" id="summernote"></div>
+    <button type="submit" class="btn btn-primary float-right">Submit</button>
+
+
+
+    <script>
+        $('#summernote').summernote({
+          placeholder: 'Hello Bootstrap 4',
+          tabsize: 2,
+          height: 500
+        });
+    </script> -->
+  
+
+
+
+
+
+
+    <!-- <form action="" method="POST">
+        {% csrf_token %}
+        <table>
+            {{form.as_table}}
+        </table> 
+        <input type="submit" value="제출">
+    </form> -->
   </div>
 {% endblock %}
 

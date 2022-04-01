@@ -10,9 +10,22 @@ from django.views.generic import ListView, DetailView, CreateView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.core.exceptions import PermissionDenied
 from django.utils.text import slugify
+# from .forms import PostForm
 
 # Create your views here.
 
+# class LatestView(ListView) :
+#     model = Post
+#     ordering = '-pk'
+#     template_name = 'page/home.html'
+
+#     def get_context_data(self, **kwargs) :
+#         context = super(PostList, self).get_context_data()
+#         context['categories'] = Category.objects.all()
+#         context['no_category_post_count'] = Post.objects.filter(category=None).count()
+#         return context
+
+    
 class PostList(ListView) :
     model = Post
     ordering = '-pk'
@@ -109,6 +122,7 @@ def portfolio_details(request, pk) :
     )
 
 def category_page(request, slug) :
+    
     if slug == 'no_category' :
         category = '미분류'
         post_list = Post.objects.filter(category=None)
@@ -127,3 +141,22 @@ def category_page(request, slug) :
             'category' : category,
         }
     )
+
+
+# def home(request) :
+#     return render(request, 'page/home.html')
+
+# def post_create(request) :
+#     if request.method == "POST" :
+#         form = PostForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             post = form.save()
+#             return redirect('home')
+        
+#         else :
+#             form = PostForm()
+
+#         context = {
+#             'form' : form
+#         }
+#         return render(request, 'page/post_form.html')

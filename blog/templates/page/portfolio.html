@@ -2,6 +2,8 @@
 
 
 {% block main_area %}
+{% load static %}
+
     <!-- title banner -->
   <section class="about-banner">
       <div class="container">
@@ -43,14 +45,14 @@
               {% if p.head_image %}
                 <img src="{{ p.head_image.url }}" alt="Card image cap" class="card-img-top" width="100%">
               {% else %}
-                <img src="../storage/um.png" alt="UmJunSik" class="card-img-top" width="100%">
+                <img src="{% static 'blog/storage/data.png' %}" alt="UmJunSik" class="card-img-top" width="100%">
               {% endif %}
             </div>
             <div class="col-lg-9 col-md-9">
               <h3 class="mb-1"><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h3>
-              <h4 class="text-muted mb-1">{{ p.hook_text }}</h4>
+
               <p>
-                {{ p.get_content_markdown | truncatewords_html:45 | safe }}
+                {{ p.hook_text | truncatewords:45 | safe }}
               </p>
               <p>
                 {% if p.tags.exists %}
