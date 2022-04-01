@@ -29,7 +29,7 @@
       <div class="container">
           <!-- <img src="../storage/122.jpg" alt="red" height="300px"> -->
           <p>
-            {{ post.content }}
+            {{ post.get_content_markdown | safe}}
           </p>
           <p>
             {% if post.tags.exists %}

@@ -3,6 +3,8 @@ from tabnanny import verbose
 from unicodedata import category
 from django.db import models
 from django.contrib.auth.models import User
+from markdownx.models import MarkdownxField
+from markdownx.utils import markdown
 import os
 
 # Create your models here.
@@ -37,8 +39,7 @@ class Category(models.Model) :
 class Post(models.Model) :
     title = models.CharField(max_length=45)
     hook_text = models.CharField(max_length=100, blank=True)
-    content = models.TextField()
-
+    content = MarkdownxField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     author = models.ForeignKey(User, null=True, on_delete=models.SET_NULL)
@@ -54,3 +55,6 @@ class Post(models.Model) :
 
     def get_absolute_url(self) :
         return f'/portfolio/{self.pk}/'
+
+    def get_content_markdown(self) :
+        return markdown(self.content)

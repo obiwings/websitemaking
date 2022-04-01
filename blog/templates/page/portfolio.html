@@ -50,7 +50,7 @@
               <h3 class="mb-1"><a href="{{ p.get_absolute_url }}">{{ p.title }}</a></h3>
               <h4 class="text-muted mb-1">{{ p.hook_text }}</h4>
               <p>
-                {{ p.content | truncatewords:45 }}
+                {{ p.get_content_markdown | truncatewords_html:45 | safe }}
               </p>
               <p>
                 {% if p.tags.exists %}
