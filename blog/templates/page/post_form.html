@@ -1,5 +1,5 @@
 {% extends 'page/base.html' %}
-
+{% load crispy_forms_tags %}
 {% block head_title %}Create Post - Portfolio{% endblock %}
 
 {% block main_area %}
@@ -21,17 +21,19 @@
   </section>
 
   <!-- post form -->
-  <form method="post" enctype="multipart/form-data">{% csrf_token %}
-      <table>
-          {{ form }}
-          <tr>
-              <th><label for="id_tags_str">Tags:</label></th>
-              <td><input type="text" name="tags_str" id="id_tags_str"></td>
-          </tr>
-      </table>
-      <button type="submit" class="btn btn-primary float-right">Submit</button>
-  </form>
-
+  <div class="container">
+    <form method="post" enctype="multipart/form-data">{% csrf_token %}
+        <table>
+            {{ form | crispy }}
+            <div id="div_id_tags_str">
+                <label for="id_tags_str">Tags:</label>
+                <input type="text" name="tags_str" id="id_tags_str" class="textinput form-control">
+            </div>
+        </table>
+        <br>
+        <button type="submit" class="btn btn-primary float-right">Submit</button>
+    </form>
+  </div>
 {% endblock %}
 
 
