@@ -44,7 +44,15 @@
       </div>
 
   </section>
+  <div class="container" align="right">
+    {% if user.is_authenticated and user == post.author %}
+      <a href="/portfolio/update_post/{{ post.pk }}/" class="genric-btn primary-border circle" target="_blank">&nbsp;&nbsp; Edit current Post &nbsp;&nbsp;</a>
+    {% endif %}
+  </div>
+
   <hr>
+
+
 
   <!-- comment -->
   <section id="comment-area">

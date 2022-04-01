@@ -35,7 +35,13 @@
             <li><a href="/">Home</a></li>
             <li><a href="/about_me">About</a></li>
             <li><a href="/portfolio">Portfolio</a></li>
-            <li><a href="HarrisonJansmaResume.pdf" class="genric-btn primary-border circle" target="_blank">Contact</a></li>
+            {% if user.is_authenticated %}
+              {% if user.is_superuser or user.is_staff %}
+                <li><a href="/portfolio/create_post/" class="genric-btn primary-border circle" target="_blank">WRITE</a></li>
+              {% endif %}
+            {% else %}
+              <li><a href="HarrisonJansmaResume.pdf" class="genric-btn primary-border circle" target="_blank">Contact</a></li>
+            {% endif %}
             </ul>
   
         </nav><!-- #nav-menu-container -->
