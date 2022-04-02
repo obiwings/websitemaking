@@ -3,6 +3,7 @@ from unicodedata import category
 from urllib import response
 from django.test import TestCase, Client
 from bs4 import BeautifulSoup
+from pip import main
 from .models import Post, Category, User
 
 # Create your tests here.
@@ -157,6 +158,42 @@ class TestView(TestCase) :
         # self.assertIn('한글태그', main_area.text)
         # self.assertIn('some tag', main_area.text)
         # self.assertNotIn('python', main_area.text)
+
+
+    def test_delete_post(self) :
+        post_by_trump = Post.objects.create(
+            post = self.post_001,
+            author = self.user_trump,
+            content = '트럼프의 글입니다.'
+        )
+        
+        self.assertEqual(Post.objects.count(), 1)
+
+        self.client.login(username='trump', password='someword')
+        response = self.client.get(self.post_001.get_absolute_url())
+        self.assertEqual(response.status_code, 200)
+        soup = BeautifulSoup(response.content, 'html.parser')
+
+        main_area = soup.find('div', id='main-area')
+        self.assertFalse(main_area.find('a', id='post-delete-button'))
+        post_delete_btn = main_area.find('a', id='post-delete-button')
+        self.assertIn('Delete', post_delete_btn.text)
+        
+        delete_post_modal = soup.find('div', id='DeletePostModal')
+        self.assertIn('Are you Sure?', delete_post_modal.text)
+        really_delete_btn = delete_post_modal.find('a')
+        self.assertIn('Delete', really_delete_btn.text)
+        self.assertIn(
+            really_delete_btn.attrs['href'],
+            '/portfolio/delete_post/1/'
+        )
+
+        response = self.client.get('/portfolio/delete_post/1/', follow=True)
+        self.assertEqual(response.status_code, 200)
+        soup = BeautifulSoup(response.content, 'html.parser')
+        self.assertEqual(Post.objects.count(), 0)
+
+
 
 
 

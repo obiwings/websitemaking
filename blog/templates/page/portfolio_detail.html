@@ -50,44 +50,43 @@
       </div>
 
   </section>
-  <div class="container" align="right">
-    {% if user.is_authenticated and user == post.author %}
-      <a href="/portfolio/update_post/{{ post.pk }}/" class="genric-btn primary-border circle" target="_blank">&nbsp;&nbsp; Edit current Post &nbsp;&nbsp;</a>
-    {% endif %}
-  </div>
-
-  <hr>
-
-
-
-  <!-- comment -->
-  <!-- <section id="comment-area"> -->
-    <!-- <div class="card-body"> -->
-      <!-- Comment form-->
-      <!-- <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form> -->
-      
-      
-      <!-- Comment with nested comments-->
-<!-- 
-      {% if post.comment_set.exists %}
-        {% for comment in post.comment_set.iterator %} -->
-      <!-- Single comment-->
-          <!-- <div class="d-flex" id="commet-{{ comment.pk }}">
-            <div class="flex-shrink-0 mr-3"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..."></div>
-              <div class="ms-3">
-                <div class="fw-bold">
-                  {{ comment.author.username }} &nbsp;&nbsp; <span class="lnr lnr-pencil"></span>{{ comment.created_at }}
-                </div>
-                <div>                
-                  {{ comment.content | linebreaks }}
-                </div>
-              </div>
-          </div>
-            <hr>
-        {% endfor %}
-      {% endif %}
+  {% if user.is_authenticated and user == post.author %}
+    <div class="container" align="right">
+        <a href="/portfolio/update_post/{{ post.pk }}/" class="btn genric-btn primary-border circle" target="_blank">&nbsp;&nbsp; Edit current Post &nbsp;&nbsp;</a>
+        <a href="/portfolio/{{ post.pk }}/delete/" class="delete btn genric-btn primary-border circle">
+          &nbsp;&nbsp; Delete &nbsp;&nbsp;
+        </a>
     </div>
-  </section> -->
+  {% endif %}  
+
+
+
+  
+  <!-- delete post modal -->
+  <!-- <div class="modal fade" id="DeletePostModal-{{ post.pk }}" tabindex="-1" role="dialog" aria-labelledby="DeletePostModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="DeleteModalLabel">
+            Are you sure?
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="ture">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <del>{{ post | linebreaks }}</del>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+          <a href="/portfolio/delete_post/{{ post.pk }}/">Delete</a>
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+
+    <hr>
 
   <!-- comment by disqus -->
   <div class="container">
@@ -116,4 +115,15 @@
 
 {% endblock %}
 
-
+  <!-- JavaScript -->
+  {% block script %}
+  <script type='text/javascript'>
+    $(document).ready(function(){
+        $(".delete").on('click', function() {
+            if(confirm("정말로 삭제하시겠습니까?")) {
+                location.href = $(this).data('uri');
+            }
+        });
+    });
+  </script>
+  {% endblock%}

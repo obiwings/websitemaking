@@ -34,17 +34,13 @@
           <h2>INTRODUCE</h2>
           <h4 class="mt-10 mb-20">myself</h4>
           <p>
-            아래에 portfolio로 가는 버튼을 추가<br>
-            진짜 하기 귀찮네요 이거 의외로<br>
-            솔직히 html은 시시합니다. <br>
-            이런거에 거의 3주 투자했죠? <br>
-            개 미련하다고 생각합니다.
+            R, Python, SAS를 배우고 있습니다. <br>
+            통계 분석을 좋아하지만 잘 하진 않습니다. <br>
+            언젠가는 잘하고 싶네요.
           </p>
           <a href="/portfolio" role="button" class="btn btn-outline-primary btn-lg">
             My Projects
           </a>
-
-
 
         </div>
 
@@ -70,7 +66,9 @@
             <span class="lnr lnr-chart-bars"></span>
             <a><h4>Data Analystic</h4></a>
             <p>
-              학점 3 점대 머저리지만, 어찌되었건 흉내는 낼 줄 압니다...
+              학점은 3점 중반 밖에 안 되는 바보입니다. <br>
+              어찌저찌 남들이 해놓은 코드를 보고 흉내 정도만 낼 줄 압니다. <br>
+              머리가 나빠서 데이터 전처리를 잘 못합니다.
             </p>
           </div>       
          </div>
@@ -80,7 +78,7 @@
             <span class="lnr lnr-laptop"></span>
             <a><h4>Machine Learning</h4></a>
             <p>
-              흥미는 있는데요, 제대로 모릅니다. 이론은 조금 압니다...
+              흥미는 있는데요, 제대로 모릅니다. 이론만 조금 압니다...
             </p>
           </div>
         </div>
@@ -90,7 +88,7 @@
             <span class="lnr lnr-database"></span>
             <a><h4>Data Mining</h4></a>
             <p>
-              머리가 나빠서 data 전처리를 잘 못합니다. 제대로 수행한다 해도 그 의미를 분석하질 못합니다.
+              Decision Tree나 Randon Forest, Logistic Reg, ANN 등으로 데이터 마이닝을 해본 경험은 있지만 초보적인 수준입니다.
             </p>
           </div>
         </div>
@@ -108,9 +106,9 @@
         <div class="col-lg-4 col-md-6">
           <div class="single-services">
             <span class="lnr lnr-trash"></span>
-            <a><h4>Dear 문레기 친구들</h4></a>
+            <a><h4>Trash</h4></a>
             <p>
-              머리도 나쁜데 코딩은 왜함? 취직 포기하고 야가다 해라
+              저도 코딩 좀 잘하고 싶네요
             </p>
           </div>
         </div>
@@ -129,7 +127,7 @@
             <div class="col-lg-4 col-md-4">
               <h2>{{ p.title }}</h2>
               <h4>{{ p.created_at }}</h4>
-              <p>{{ p.content }}</p>
+              <p>{{ p.hook_text }}</p>
             </div>
             <hr>
           {% endfor %}
