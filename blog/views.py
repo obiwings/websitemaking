@@ -31,16 +31,43 @@ from .forms import CreatePost
 #         return context
 
 
-class LatestList(ListView) :
-    model = Post
-    ordering = '-pk'
-    template_name = 'page/home.html'
+def landing(request) :
+    posts = Post.objects.all()
+    return render(
+        request,
+        'page/home.html',
+        {
+            'posts' : posts,
+        }
+    )
 
-    def get_context_data(self, **kwargs) :
-        context = super(PostList, self).get_context_data()
-        context['categories'] = Category.objects.all()
-        context['no_category_post_count'] = Post.objects.filter(category=None).count()
-        return context
+def about_me(request) :
+    return render(
+        request,
+        'page/about_me.html'
+    )
+
+def portfolio(request) :
+    return render(
+        request,
+        'page/portfolio.html'
+    )
+
+
+
+# class LatestList(ListView) :
+#     model = Post
+#     ordering = '-pk'
+#     template_name = 'page/home.html'
+#     context_object_name = "posts"
+
+
+
+    # def get_context_data(self, **kwargs) :
+    #     context = super(PostList, self).get_context_data()
+    #     context['categories'] = Category.objects.all()
+    #     context['no_category_post_count'] = Post.objects.filter(category=None).count()
+    #     return context
 
 
 
